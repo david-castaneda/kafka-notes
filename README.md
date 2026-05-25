@@ -9,6 +9,7 @@ Apache Kafka is a distributed event streaming platform used for building real-ti
 - [Producers](./02-producers.md)
 - [Consumers](./03-consumers.md)
 - [Brokers](./04-brokers.md)
+- [Cluster](./05-cluster.md)
 
 ## Reference Links:
 
