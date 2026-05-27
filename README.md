@@ -15,8 +15,3 @@ Apache Kafka is a distributed event streaming platform used for building real-ti
 
 - https://kafka.apache.org
 - https://training.confluent.io/learn/courses/1073/confluent-apache-kafka-fundamentals-course-accreditation
-
-Open questions:
-
-- How does connecting to a broker work? Is there a "master broker" that knows which brokers have which topics / partitions?
-- Whats the deal with the terms broker or node or server being thrown around? Are they meaninfully different?
