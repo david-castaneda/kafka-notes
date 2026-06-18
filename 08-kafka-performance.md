@@ -43,7 +43,7 @@ Reducing linger.ms ensures messages are sent immediately, and synchronous sends 
 - By default producers send messages asynchronously. You can configue it to send messages synchronously.
 - While synchronous sends can reduce latency, they can also reduce throughput. Aysnchronous sends can increase throughput, but may slighly increase latency.
 
-Kafka allows you to configure the acknolegment level with the acks parameter. The three possible values are:
+Kafka allows you to configure the acknoledgment level with the acks parameter. The three possible values are:
 
 - acks=0: No acknowlegment, fastest but most risky
 - acks=1:Acknowlegment after the leader replica receives the message

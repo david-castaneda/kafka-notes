@@ -16,5 +16,6 @@ Apache Kafka is a distributed event streaming platform used for building real-ti
 - https://kafka.apache.org
 - https://training.confluent.io/learn/courses/1073/confluent-apache-kafka-fundamentals-course-accreditation
 - https://developer.confluent.io/courses/apache-kafka/events/
-- https://medium.com/@roman.novosad87/my-confluent-certified-developer-for-apache-kafka-ccdak-journey-0594ee6cb61e
 - https://www.udemy.com/course/apache-kafka
+- https://medium.com/@stephane.maarek/how-to-prepare-for-the-confluent-certified-developer-for-apache-kafka-ccdak-exam-ab081994da78
+- https://medium.com/@roman.novosad87/my-confluent-certified-developer-for-apache-kafka-ccdak-journey-0594ee6cb61e
