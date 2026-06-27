@@ -55,7 +55,7 @@ Additional flags:
 - Produce data to a topic
 
 ```sh
-kafka-console-producer --broker-list kafka:9092 --topic sample-topic
+kafka-console-producer --bootstrap-server kafka:9092 --topic sample-topic
 ```
 
 Additional flags:
