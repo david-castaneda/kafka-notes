@@ -35,18 +35,28 @@ kafka-topics --delete \
 --topic vehicle-positions
 ```
 
+- Add partitions to a topic
+
+```sh
+kafka-topics --alter \
+--bootstrap-server kafka:9092 \
+--topic vehicle-positions \
+--partitions 3
+```
+
 ## kafka-console-consumer
 
 - Consume data from a topic
 
 ```sh
 kafka-console-consumer \
---bootstrap kafka:9092 \
+--bootstrap-server kafka:9092 \
 --topic vehicle-positions
 ```
 
 Additional flags:
 
+- `--group my-consumer-group` - the name of the consumer group
 - `--from-beginning` - start from the beginning of the topic offset
 - `--property print.key=true` - print the message key
 

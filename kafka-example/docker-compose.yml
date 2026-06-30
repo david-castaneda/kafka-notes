@@ -9,12 +9,29 @@ services:
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
       KAFKA_NODE_ID: 1 # nodes identity in the quorum
       KAFKA_PROCESS_ROLES: broker,controller # combined mode
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,PLAINTEXT_INTERNAL://0.0.0.0:29092,CONTROLLER://0.0.0.0:9099 # the sockets the broker binds
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka1:29092" # what clients are told to connect back on
       KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka1:9099" # who's in the controller quorum
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9099 # the sockets the broker binds
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092 # what clients are told to connect back on
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT,CONTROLLER:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+    healthcheck:
+      test: ["CMD-SHELL", "kafka-topics --bootstrap-server localhost:9092 --list > /dev/null 2>&1"]
+      interval: 5s
+      timeout: 10s
+      retries: 15
+      start_period: 15s
+
+  kafka-datagen:
+    image: kafka-datagen  
+    container_name: datagen
+    depends_on:
+      kafka1:
+        condition: service_healthy
+    volumes:
+      - ./orders.json:/app/orders.json
+    command: --config orders.json --bootstrap-server kafka1:29092

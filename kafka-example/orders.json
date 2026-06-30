@@ -1,0 +1,15 @@
+{
+  "topic": "orders",
+  "rate_ms": 200,
+  "count": -1,
+  "key": "order_id",
+  "schema": {
+    "stable_id": { "type": "static", "value": "1" },
+    "order_id": "uuid4",
+    "customer_name": "name",
+    "email": "email",
+    "amount": "pyfloat:min_value=1,max_value=500,right_digits=2",
+    "status": { "type": "enum", "values": ["pending", "paid", "cancelled"] },
+    "created_at": "iso8601"
+  }
+}
